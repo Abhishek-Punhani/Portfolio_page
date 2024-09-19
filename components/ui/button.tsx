@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FC, ReactNode } from "react";
 
 interface ButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   link?: string;
   IsIcon?: boolean;
   className?: string;
@@ -44,3 +44,5 @@ const ButtonBody: FC<ButtonBodyProps> = ({ children, IsIcon, className }) => {
     ></div>
   );
 };
+
+export default Button;

@@ -1,4 +1,5 @@
 "use client";
+import Landing from "@/components/sections/LandingSection/Landing";
 import WaterWaveWrapper from "@/components/visualEffects/water-wave-wrapper";
 
 export default function Home() {
@@ -9,7 +10,11 @@ export default function Home() {
       dropRadius="3"
       resolution="2048"
     >
-      {() => <div className="h-screen"></div>}
+      {() => (
+        <div>
+          <Landing />
+        </div>
+      )}
     </WaterWaveWrapper>
   );
 }

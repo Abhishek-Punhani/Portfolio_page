@@ -6,7 +6,7 @@ import { FC, useEffect, useState } from "react";
 interface LiveClockProps {
   timeZone: string;
 }
-// Asia/Kolkata
+
 const LiveClock: FC<LiveClockProps> = ({ timeZone }) => {
   const [time, setTime] = useState<string>("");
 
@@ -17,11 +17,12 @@ const LiveClock: FC<LiveClockProps> = ({ timeZone }) => {
     };
 
     const intervalId = setInterval(updateClock, 1000);
-    //cleanup interval after use
+    // Cleanup interval after use
     return () => clearInterval(intervalId);
   }, [timeZone]);
+
   return (
-    <div className=" flex items-center justify-center gap-[0.5vw] text-3xl text-secondary-background font-semibold">
+    <div className="flex items-center justify-center gap-[0.5vw] text-3xl text-gray-500 font-semibold">
       {time ? (
         <div className="flex items-center justify-center gap-[0.5vw]">
           <span>{timeZone.split("/")[1]}</span>
@@ -33,3 +34,5 @@ const LiveClock: FC<LiveClockProps> = ({ timeZone }) => {
     </div>
   );
 };
+
+export default LiveClock;
