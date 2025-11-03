@@ -114,7 +114,7 @@ const featuredData = [
   {
     title: "Pariavartan",
     tag: "2024",
-    githubUrl: "https://github.com/Abhishek-Punhani/Pariavartan",
+    githubUrl: "https://github.com/Abhishek-Punhani/Parivartan",
     deployUrl: "https://pariavartan.vercel.app",
     description:
       "Web3-integrated environmental platform with zero-knowledge proofs for anonymous reporting. Community-driven river pollution monitoring and cleanup organization. Features chatbot support, real-time pollution updates, and decentralized complaint verification. Empowering environmental activism through blockchain.",
