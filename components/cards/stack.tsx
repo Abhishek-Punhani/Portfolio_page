@@ -1,43 +1,50 @@
 import { stackData } from "@/data";
 import Card from "../ui/card";
-import Tooltip from "../ui/tooltip";
 
 export default function StackCard() {
   return (
-    <Card title="Tech Arsenal" className="animate-float">
-      <div className="flex flex-col gap-8 mt-4">
+    <Card title="Tech Arsenal" className="relative overflow-hidden">
+      {/* Animated background glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div
+          className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
+      </div>
+
+      <div className="relative flex flex-col gap-6 mt-6">
         {stackData.map((tech, i) => (
           <div
             key={i}
-            className="grid items-center gap-6 animate-slide-in-left"
+            className="group animate-slide-in-left"
             style={{
-              gridTemplateColumns: "1fr 2fr",
-              animationDelay: `${i * 300}ms`,
+              animationDelay: `${i * 150}ms`,
             }}
           >
-            {/*Stack group name with tech styling*/}
-            <div className="h-auto flex-none break-words whitespace-pre">
-              <p
-                className="text-gray-100 font-bold text-lg"
-                data-text={tech.title}
-              >
-                {tech.title}
-              </p>
-              <div className="w-full h-0.5 bg-gradient-to-r from-cyan-500 to-purple-600 mt-2 rounded-full"></div>
+            {/* Category Header */}
+            <div className="mb-4">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
+                <h3 className="text-sm font-bold text-cyan-400 tracking-wider uppercase">
+                  {tech.title}
+                </h3>
+                <div className="flex-1 h-[1px] bg-gradient-to-r from-cyan-500/30 to-transparent"></div>
+              </div>
             </div>
-            {/*Tech stack items with enhanced animations */}
-            <div className="flex flex-wrap gap-4">
-              {tech.stack.map((t, index) => (
+
+            {/* Tech Items */}
+            <div className="flex flex-wrap gap-2.5">
+              {tech.stack.map((item, index) => (
                 <div
-                  key={t.id}
-                  className="tech-item animate-scale-in"
-                  style={{ animationDelay: `${i * 300 + index * 100}ms` }}
+                  key={`${tech.title}-${index}`}
+                  className="animate-scale-in"
+                  style={{ animationDelay: `${i * 150 + index * 50}ms` }}
                 >
-                  <Tooltip
-                    title={t.title}
-                    image={t.image}
-                    bgColor={t.bgColor}
-                  />
+                  <span className="inline-flex items-center gap-2 px-4 py-2.5 bg-black/60 border border-white/10 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:border-cyan-500/50 hover:bg-black/80 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 cursor-default backdrop-blur-sm group-hover:border-white/20">
+                    <span className="w-1 h-1 bg-cyan-400/70 rounded-full"></span>
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
