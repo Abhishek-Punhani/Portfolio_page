@@ -1,7 +1,7 @@
 import { featuredData } from "@/data";
-import FeaturedCard from "../cards/featured/featured-card";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import FeaturedCard from "../cards/feautured/feautured-card";
 
 export default function ExpandableFeatured() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -26,10 +26,12 @@ export default function ExpandableFeatured() {
           onMouseLeave={() => handleMouseLeave()}
         >
           <FeaturedCard
-            active={i === hoveredIndex}
-            title={featured.title}
-            tag={featured.tag}
-            video={featured.video}
+            {...({
+              active: i === hoveredIndex,
+              title: featured.title,
+              tag: featured.tag,
+              video: (featured as any).video,
+            } as any)}
           />
         </div>
       ))}

@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
-import { FC, useState } from "react";
+import { FC, useState, ReactElement } from "react";
 
 interface TooltipProps {
   title: string;
-  image: string | StaticImport;
+  image: string | StaticImport | ReactElement;
   bgColor?: string;
 }
 
@@ -38,11 +38,17 @@ const Tooltip: FC<TooltipProps> = ({ title, image, bgColor }) => {
     >
       <div className="w-[27px] h-[27px] flex items-center justify-center">
         {image && image !== "" ? (
-          <Image
-            src={image}
-            alt={title}
-            className="w-full h-full overflow-clip object-contain"
-          />
+          typeof image === "string" || (image as any)?.src ? (
+            <Image
+              src={image as string | StaticImport}
+              alt={title}
+              className="w-full h-full overflow-clip object-contain"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              {image as ReactElement}
+            </div>
+          )
         ) : (
           <span className="text-white font-bold text-xs">
             {getDisplayText(title)}
