@@ -1,22 +1,16 @@
 "use client";
+import AboutSection from "@/components/sections/AboutSection/about";
+import ContactSection from "@/components/sections/ContactSection/contact";
 import FeaturedSection from "@/components/sections/FeauturedSection/Feautured";
 import Landing from "@/components/sections/LandingSection/Landing";
-import WaterWaveWrapper from "@/components/visualEffects/water-wave-wrapper";
 
 export default function Home() {
   return (
-    <WaterWaveWrapper
-      imageUrl=""
-      perturbance="3"
-      dropRadius="3"
-      resolution="2048"
-    >
-      {() => (
-        <div className="p-5">
-          <Landing />
-          <FeaturedSection />
-        </div>
-      )}
-    </WaterWaveWrapper>
+    <div className="p-5">
+      <Landing />
+      <FeaturedSection />
+      <AboutSection />
+      <ContactSection />
+    </div>
   );
 }

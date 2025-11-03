@@ -1,14 +1,17 @@
 import Header from "@/components/navigation/header";
-import Button from "@/components/ui/button";
-import FancyButton from "@/components/ui/fancy-btn";
-import LiveClock from "@/components/ui/LiveClock";
-import ScrollDown from "@/components/ui/scrollDown";
+import FancyButton from "@/components/ui/fancy-button";
+import LiveClock from "@/components/ui/live-clock";
+import ScrollDown from "@/components/ui/scroll-down";
 import MagneticWrapper from "@/components/visualEffects/magnetic-btn";
+import RotatingMoon from "@/components/visualEffects/rotating-moon";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 
 function Landing() {
   return (
     <div className="relative h-screen overflow-hidden p-8">
+      {/* Rotating Moon Background */}
+      <RotatingMoon />
+
       {/* Header */}
       <Header />
       {/* Show btn on small screens  */}
@@ -28,18 +31,18 @@ function Landing() {
             <span>Code</span>
           </div>
           <div>
-            <span>Crafting</span>
+            <span>Innovation</span>
           </div>
           <div className="relative">
-            <span>Brilliance</span>
+            <span>Excellence</span>
             <div className="text-[1rem] leading-[1.4rem] tracking-[-0.07rem] absolute top-[14vw] lg:top-[10vw] 2xl:top-[9rem] left-0 2xl:left-[57rem] w-[30rem] uppercase font-normal ">
               <span>Empowering innovation</span>
               <br />
               <span>through inspired designs</span>
               <br />
-              <span>wgere challenges spark creativity</span>
+              <span>where challenges spark creativity</span>
               <br />
-              <span>and solutions to redefine possibilities!</span>
+              <span>and solutions redefine possibilities!</span>
             </div>
           </div>
         </div>

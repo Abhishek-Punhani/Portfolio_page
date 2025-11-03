@@ -1,4 +1,4 @@
-import FancyButton from "../ui/fancy-btn";
+import FancyButton from "../ui/fancy-button";
 import Profile from "../ui/profile";
 import MagneticWrapper from "../visualEffects/magnetic-btn";
 import { FaArrowRight } from "react-icons/fa";

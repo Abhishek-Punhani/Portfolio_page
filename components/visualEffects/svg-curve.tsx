@@ -32,7 +32,7 @@ export default function SvgCurve() {
   };
 
   const resetAnimation = () => {
-    cancelAnimationFrame(reqId);
+    cancelAnimationFrame(reqId as number);
 
     animateOut();
   };
@@ -66,8 +66,11 @@ export default function SvgCurve() {
     const handleResize = () => {
       setPath(progress);
     };
+    if(window && typeof(window)!=undefined)
+    {
 
-    window.addEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize);
+    }
 
     // Clean up the event listener on component unmount
     return () => {

@@ -1,6 +1,6 @@
 "use client";
-import { FC, ReactNode } from "react";
-import WaterWave from "react-water-wave";
+import { FC, ReactNode, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 
 interface WaterWaveProps {
   imageUrl: string;
@@ -10,6 +10,12 @@ interface WaterWaveProps {
   children: () => ReactNode;
 }
 
+// Dynamically import WaterWave to avoid SSR issues
+const WaterWave = dynamic(() => import("react-water-wave"), {
+  ssr: false,
+  loading: () => null,
+}) as any;
+
 const WaterWaveWrapper: FC<WaterWaveProps> = ({
   imageUrl,
   dropRadius,
@@ -17,6 +23,17 @@ const WaterWaveWrapper: FC<WaterWaveProps> = ({
   resolution,
   children,
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Render children directly during SSR and initial mount
+  if (!isMounted) {
+    return <>{children()}</>;
+  }
+
   return (
     <WaterWave
       imageUrl={imageUrl}

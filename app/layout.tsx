@@ -34,6 +34,7 @@ export default function RootLayout({
           OswaldFont.variable,
           PixelFont.variable
         )}
+        suppressHydrationWarning={true}
       >
         <GrainEffect />
         <Cursor color="#fff" />
