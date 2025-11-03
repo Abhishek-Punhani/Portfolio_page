@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
-import { FC, useState, ReactElement } from "react";
+import { FC, useState, ComponentType } from "react";
 
 interface TooltipProps {
   title: string;
-  image: string | StaticImport | ReactElement;
+  image: string | StaticImport | ComponentType<any>;
   bgColor?: string;
 }
 
@@ -25,6 +25,10 @@ const Tooltip: FC<TooltipProps> = ({ title, image, bgColor }) => {
     return fundamentalsMap[title] || title.charAt(0).toUpperCase();
   };
 
+  // Check if image is a React component (SVG from @svgr/webpack)
+  const isComponent = typeof image === "function";
+  const isStaticImport = image && typeof image === "object" && "src" in image;
+
   return (
     <div
       className={cn(
@@ -38,17 +42,24 @@ const Tooltip: FC<TooltipProps> = ({ title, image, bgColor }) => {
     >
       <div className="w-[27px] h-[27px] flex items-center justify-center">
         {image && image !== "" ? (
-          typeof image === "string" || (image as any)?.src ? (
+          isComponent ? (
+            // Render SVG component
+            <div className="w-full h-full flex items-center justify-center">
+              {(() => {
+                const SvgComponent = image as ComponentType<any>;
+                return (
+                  <SvgComponent className="w-full h-full object-contain" />
+                );
+              })()}
+            </div>
+          ) : isStaticImport || typeof image === "string" ? (
+            // Render PNG/JPG with Next Image
             <Image
               src={image as string | StaticImport}
               alt={title}
               className="w-full h-full overflow-clip object-contain"
             />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              {image as ReactElement}
-            </div>
-          )
+          ) : null
         ) : (
           <span className="text-white font-bold text-xs">
             {getDisplayText(title)}

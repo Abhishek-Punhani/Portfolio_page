@@ -40,11 +40,11 @@ export default function RotatingMoon() {
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Lighting setup - Professional cinematic lighting
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.15); // Reduced from 0.2
+    // Lighting setup - Minimal lighting for subtle moon
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.1);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Reduced from 1.5
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(-100, 10, 50);
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 2048;
@@ -52,14 +52,14 @@ export default function RotatingMoon() {
     scene.add(directionalLight);
 
     // Hemisphere light for realistic moon lighting
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.1); // Reduced from 0.15
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.05);
     hemiLight.color.setHSL(0.6, 1, 0.6);
     hemiLight.groundColor.setHSL(0.095, 1, 0.75);
     hemiLight.position.set(0, 0, 0);
     scene.add(hemiLight);
 
-    // Rim light for that sexy glow
-    const rimLight = new THREE.DirectionalLight(0x4a90e2, 0.3); // Reduced from 0.5
+    // Rim light for subtle glow
+    const rimLight = new THREE.DirectionalLight(0x4a90e2, 0.2);
     rimLight.position.set(5, -2, -5);
     scene.add(rimLight);
 
@@ -95,9 +95,9 @@ export default function RotatingMoon() {
     scene.add(moon);
     moonRef.current = moon;
 
-    // Create starfield - reduced for professional background overlay
+    // Create starfield - minimal and subtle
     const starGeometry = new THREE.BufferGeometry();
-    const starCount = 400; // Reduced from 800
+    const starCount = 200; // Reduced for subtle effect
     const positions = new Float32Array(starCount * 3);
 
     for (let i = 0; i < starCount * 3; i++) {
@@ -111,27 +111,16 @@ export default function RotatingMoon() {
 
     const starMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
-      size: 0.6, // Reduced from 0.8
+      size: 0.3,
       transparent: true,
-      opacity: 0.4, // Reduced from 0.8 for subtle background effect
+      opacity: 0.2, // Very subtle
     });
 
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
     starsRef.current = stars;
 
-    // Add starfield background sphere for depth
-    const worldTexture = textureLoader.load(
-      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/17271/hipp8_s.jpg"
-    );
-    const worldGeometry = new THREE.SphereGeometry(1000, 60, 60);
-    const worldMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      map: worldTexture,
-      side: THREE.BackSide,
-    });
-    const world = new THREE.Mesh(worldGeometry, worldMaterial);
-    scene.add(world);
+    // Remove the background sphere - we don't want it
 
     // Animation loop - Smooth and professional
     const animate = () => {
@@ -179,8 +168,8 @@ export default function RotatingMoon() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 pointer-events-none z-0"
-      style={{ width: "100%", height: "100%" }}
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
+      style={{ margin: 0, padding: 0 }}
     />
   );
 }

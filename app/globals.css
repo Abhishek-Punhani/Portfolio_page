@@ -135,6 +135,20 @@ body {
     left: 100%;
   }
 
+  /* Shimmer animation for progress bars */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
   /* Matrix Rain Effect */
   .matrix-bg {
     position: relative;
@@ -372,8 +386,6 @@ body {
   z-index: 1;
 }
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -429,8 +441,6 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {

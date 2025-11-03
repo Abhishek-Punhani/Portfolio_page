@@ -13,7 +13,7 @@ const Header: FC<HeaderPorps> = ({ title, tag, githubUrl, deployUrl }) => {
     <div className="bg-black/40 flex flex-none flex-nowrap relative p-4 w-full items-center justify-between h-16 border-2 border-gray-800/60 rounded-2xl group-hover:border-primary/50 transition-all duration-300 backdrop-blur-md shadow-lg shadow-black/20 z-20">
       {/*Title and Links*/}
       <div className="flex-1 min-w-0 flex items-center gap-3">
-        <p className="text-lg font-semibold leading-tight text-white truncate group-hover:text-primary transition-colors duration-300 tracking-tight">
+        <p className="text-lg font-semibold leading-tight text-white truncate group-hover:text-white transition-colors duration-300 tracking-tight">
           {title}
         </p>
         <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
@@ -22,6 +22,7 @@ const Header: FC<HeaderPorps> = ({ title, tag, githubUrl, deployUrl }) => {
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="p-1.5 rounded-lg hover:bg-primary/20 transition-all duration-200 border border-transparent hover:border-primary/40 backdrop-blur-sm"
               title="View on GitHub"
             >
@@ -33,6 +34,7 @@ const Header: FC<HeaderPorps> = ({ title, tag, githubUrl, deployUrl }) => {
               href={deployUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="p-1.5 rounded-lg bg-gradient-to-br from-green-500/20 to-blue-500/20 hover:from-green-500/30 hover:to-blue-500/30 transition-all duration-200 border border-green-500/40 hover:border-green-500/60 shadow-md shadow-green-500/30 relative backdrop-blur-sm"
               title="Live Demo"
             >

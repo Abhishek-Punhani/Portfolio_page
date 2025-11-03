@@ -17,8 +17,18 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
   githubUrl,
   deployUrl,
 }) => {
+  const handleCardClick = () => {
+    // Navigate to GitHub by default if available
+    if (githubUrl) {
+      window.open(githubUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <div className="group w-full h-full bg-gradient-to-br from-black/95 via-black/90 to-gray-900/95 border-2 border-gray-800/60 shadow-2xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:border-primary/50 transition-all duration-500 cursor-pointer flex flex-col gap-5 flex-nowrap p-6 rounded-3xl overflow-hidden hover:scale-[1.02] backdrop-blur-sm min-h-[320px] relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/10 before:via-blue-500/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+    <div
+      onClick={handleCardClick}
+      className="group w-full h-full bg-gradient-to-br from-black/95 via-black/90 to-gray-900/95 border-2 border-gray-800/60 shadow-2xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:border-primary/50 transition-all duration-500 cursor-pointer flex flex-col gap-5 flex-nowrap p-6 rounded-3xl overflow-hidden hover:scale-[1.02] backdrop-blur-sm min-h-[320px] relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/10 before:via-blue-500/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+    >
       {/* Grain Effect Overlay */}
       <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none z-10">
         <GrainEffect />
@@ -58,16 +68,30 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
         </div>
         <div className="flex gap-2">
           {githubUrl && (
-            <div className="w-8 h-8 bg-gray-800/50 rounded-lg flex items-center justify-center group-hover:bg-primary/15 transition-all duration-300 border border-gray-700/40 group-hover:border-primary/30">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(githubUrl, "_blank", "noopener,noreferrer");
+              }}
+              className="w-8 h-8 bg-gray-800/50 rounded-lg flex items-center justify-center hover:bg-primary/15 transition-all duration-300 border border-gray-700/40 hover:border-primary/30 hover:scale-110"
+              title="View Repository"
+            >
               <span className="text-base">📁</span>
-            </div>
+            </button>
           )}
           {deployUrl && (
-            <div className="relative w-8 h-8 bg-gradient-to-br from-green-500/25 to-blue-500/25 rounded-lg flex items-center justify-center group-hover:from-green-500/35 group-hover:to-blue-500/35 transition-all duration-300 border-2 border-green-500/50 group-hover:border-green-500/70 shadow-lg shadow-green-500/30 group-hover:shadow-green-500/50">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(deployUrl, "_blank", "noopener,noreferrer");
+              }}
+              className="relative w-8 h-8 bg-gradient-to-br from-green-500/25 to-blue-500/25 rounded-lg flex items-center justify-center hover:from-green-500/35 hover:to-blue-500/35 transition-all duration-300 border-2 border-green-500/50 hover:border-green-500/70 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-110"
+              title="View Live Demo"
+            >
               <span className="text-base">🌐</span>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full shadow-lg shadow-green-500/50"></div>
-            </div>
+            </button>
           )}
         </div>
       </div>

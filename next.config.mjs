@@ -8,6 +8,17 @@ const nextConfig = {
 
     return config;
   },
+  // Turbopack configuration for SVG handling
+  experimental: {
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
+  },
 };
 
 export default nextConfig;
