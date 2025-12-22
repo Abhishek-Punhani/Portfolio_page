@@ -28,7 +28,18 @@ export default function RotatingMoon() {
     camera.position.set(0, 0, 6);
     cameraRef.current = camera;
 
-    // Renderer setup
+    // Check for WebGL support
+    const canvas = document.createElement("canvas");
+    const gl =
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    if (!gl) {
+      console.warn(
+        "WebGL not supported. Skipping RotatingMoon initialization."
+      );
+      return; // Exit early if WebGL is unavailable
+    }
+
+    // Renderer setup (only if WebGL is supported)
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
