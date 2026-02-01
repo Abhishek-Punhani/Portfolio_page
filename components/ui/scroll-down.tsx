@@ -1,7 +1,7 @@
 export default function ScrollDown() {
   return (
-    <div className="w-[10rem] h-[10rem] rounded-full border border-primary-foreground grid place-items-center">
-      <div className="grid place-items-center w-[2.9rem] h-[3.6rem]">
+    <div className="w-[6rem] h-[6rem] sm:w-[8rem] sm:h-[8rem] md:w-[10rem] md:h-[10rem] rounded-full border border-primary-foreground grid place-items-center">
+      <div className="grid place-items-center w-[1.8rem] h-[2.2rem] sm:w-[2.4rem] sm:h-[3rem] md:w-[2.9rem] md:h-[3.6rem]">
         <svg
           width="100%"
           height="100%"

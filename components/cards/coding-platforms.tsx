@@ -17,7 +17,7 @@ export default function CodingPlatformsCard() {
         <div className="text-center mb-8">
           <div className="relative inline-block">
             <h3
-              className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-3 tracking-wider"
+              className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-3 tracking-wider"
               data-text="COMPETITIVE CODING"
             >
               COMPETITIVE CODING
@@ -78,7 +78,7 @@ export default function CodingPlatformsCard() {
 
                     {/* Platform Info */}
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 mb-2">
+                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 mb-2">
                         {platform.name}
                       </h3>
                       <div className="flex items-center gap-3">

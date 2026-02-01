@@ -6,7 +6,7 @@ import Landing from "@/components/sections/LandingSection/Landing";
 
 export default function Home() {
   return (
-    <div className="p-5">
+    <div className="p-4 md:p-5">
       <Landing />
       <FeaturedSection />
       <AboutSection />

@@ -13,7 +13,7 @@ import React from "react";
 
 export default function AboutSection() {
   return (
-    <div className="pt-24 px-3 lg:px-8">
+    <div className="pt-24 px-4 sm:px-6 lg:px-8">
       <Heading number="02" title_1="About" title_2="Me" />
       <div className="py-8">
         {/* First Row - Personal Info */}
@@ -21,7 +21,10 @@ export default function AboutSection() {
           <div className="animate-fade-in-up" style={{ animationDelay: "0ms" }}>
             <MeCard />
           </div>
-          <div className="animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDelay: "200ms" }}
+          >
             <ResumeCard />
           </div>
         </div>
@@ -31,7 +34,10 @@ export default function AboutSection() {
           {/* Left Column - Tech Arsenal, Education, Achievements & Rankings */}
           <div className="space-y-8">
             {/* Tech Arsenal */}
-            <div className="animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+            <div
+              className="animate-fade-in-up"
+              style={{ animationDelay: "400ms" }}
+            >
               <StackCard />
             </div>
 

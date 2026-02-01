@@ -25,7 +25,7 @@ export default function ContactSection() {
         "service_33mekm8",
         "template_urts89y",
         formRef.current,
-        "TfAuwcTgpMuTffJyH"
+        "TfAuwcTgpMuTffJyH",
       )
       .then(
         (res) => {
@@ -34,12 +34,12 @@ export default function ContactSection() {
         },
         (error) => {
           console.log(error.text);
-        }
+        },
       );
   };
 
   return (
-    <div className="pt-24 px-3 lg:px-8">
+    <div className="pt-24 px-4 sm:px-6 lg:px-8">
       <Heading number="03" title_1="Contact" title_2="Me" />
       <Card>
         <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">

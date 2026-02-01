@@ -32,8 +32,8 @@ export default function InstructorCard() {
 const contributions = [
   {
     date: "Ongoing",
-    title: "Open Source Contributor - Learning Equality",
-    subTitle: "10+ PRs & 4+ issues: UI, backend logic, unit tests",
+    title: "Open Source Contributor",
+    subTitle: "30+ PRs & 10+ issues: UI, backend logic, unit tests",
     link: "https://docs.google.com/document/d/1gkuJ4mEpgCbHH7YcIucUL2zE5BifL_rIUrdSxugGeuw/edit?tab=t.0#heading=h.r2zi7329lmpx",
     tag: "View All",
   },

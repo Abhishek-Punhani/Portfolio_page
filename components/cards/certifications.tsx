@@ -29,8 +29,13 @@ export default function CertificationsCard() {
 
 const CertificationssData = [
   {
-    date: "2023",
-    title: "Inter IIT Tech Meet 2023 Team Member",
+    date: "2025",
+    title: "Inter IIT Tech Meet 14.0 Team Member",
+    subTitle: "Pathway, IIT BHU",
+  },
+  {
+    date: "2024",
+    title: "Inter IIT Tech Meet 13.0 Team Member",
     subTitle: "Dream 11 - Averera, IIT BHU",
   },
   {
