@@ -169,7 +169,7 @@ const codingPlatforms = [
   },
   {
     name: "Codeforces",
-    rating: "1468 Rating",
+    rating: "1576 Rating",
     rank: "Specialist",
     icon: "CF",
     bgColor: "bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600",
